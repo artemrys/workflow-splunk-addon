@@ -7,8 +7,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+      - uses: actions/setup-python@f38219332975fe8f9c04cca981d674bf22aea1d3
         with:
           python-version: 3.7
       - name: Get version
@@ -32,7 +32,9 @@ jobs:
         run: |
           mkdir dist
           slim package output/${{ steps.addon_name.outputs.ADDON_NAME }} -o dist/
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@82c141cc518b40d92cc801eee768e7aafc9c2fa2
         with:
-          name: ${{ steps.addon_name.outputs.ADDON_NAME }}-${{ steps.addon_version.outputs.VERSION }}.tar.gz
-          path: dist/${{ steps.addon_name.outputs.ADDON_NAME }}-${{ steps.addon_version.outputs.VERSION }}.tar.gz
+          name: ${{ steps.addon_name.outputs.ADDON_NAME }}-${{
+            steps.addon_version.outputs.VERSION }}.tar.gz
+          path: dist/${{ steps.addon_name.outputs.ADDON_NAME }}-${{
+            steps.addon_version.outputs.VERSION }}.tar.gz

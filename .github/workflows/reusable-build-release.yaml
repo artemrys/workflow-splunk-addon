@@ -39,3 +39,7 @@ jobs:
       - uses: splunk/appinspect-cli-action@32f829879df8117a18098ac42024ac6d83c25130
         with:
           app_path: dist/${{ steps.addon_name.outputs.ADDON_NAME }}-${{steps.addon_version.outputs.VERSION }}.tar.gz
+      - uses: actions/upload-artifact@82c141cc518b40d92cc801eee768e7aafc9c2fa2
+        with:
+          name: appinspect_result.json
+          path: appinspect_result.json

@@ -36,6 +36,6 @@ jobs:
         with:
           name: ${{ steps.addon_name.outputs.ADDON_NAME }}-${{steps.addon_version.outputs.VERSION }}.tar.gz
           path: dist/${{ steps.addon_name.outputs.ADDON_NAME }}-${{steps.addon_version.outputs.VERSION }}.tar.gz
-      - uses: splunk/appinspect-cli-action@v1.4.6
+      - uses: splunk/appinspect-cli-action@32f829879df8117a18098ac42024ac6d83c25130
         with:
           app_path: dist/${{ steps.addon_name.outputs.ADDON_NAME }}-${{steps.addon_version.outputs.VERSION }}.tar.gz

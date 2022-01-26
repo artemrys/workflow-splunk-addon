@@ -34,7 +34,8 @@ jobs:
           slim package output/${{ steps.addon_name.outputs.ADDON_NAME }} -o dist/
       - uses: actions/upload-artifact@82c141cc518b40d92cc801eee768e7aafc9c2fa2
         with:
-          name: ${{ steps.addon_name.outputs.ADDON_NAME }}-${{
-            steps.addon_version.outputs.VERSION }}.tar.gz
-          path: dist/${{ steps.addon_name.outputs.ADDON_NAME }}-${{
-            steps.addon_version.outputs.VERSION }}.tar.gz
+          name: ${{ steps.addon_name.outputs.ADDON_NAME }}-${{steps.addon_version.outputs.VERSION }}.tar.gz
+          path: dist/${{ steps.addon_name.outputs.ADDON_NAME }}-${{steps.addon_version.outputs.VERSION }}.tar.gz
+      - uses: splunk/appinspect-cli-action@v1.4.6
+        with:
+          app_path: dist/${{ steps.addon_name.outputs.ADDON_NAME }}-${{steps.addon_version.outputs.VERSION }}.tar.gz

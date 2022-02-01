@@ -19,5 +19,5 @@ on:
 
 jobs:
   build:
-    uses: artemrys/workflow-splunk-addon/.github/workflows/reusable-build-release.yaml@v0.0.4
+    uses: artemrys/workflow-splunk-addon/.github/workflows/reusable-build-release.yaml@v0.0.5
 ```

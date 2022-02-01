@@ -7,8 +7,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
-      - uses: actions/setup-python@f38219332975fe8f9c04cca981d674bf22aea1d3
+      - uses: actions/checkout@v2.4.0
+      - uses: actions/setup-python@v2.3.1
         with:
           python-version: 3.7
       - name: Get version
@@ -32,14 +32,14 @@ jobs:
         run: |
           mkdir dist
           slim package output/${{ steps.addon_name.outputs.ADDON_NAME }} -o dist/
-      - uses: actions/upload-artifact@82c141cc518b40d92cc801eee768e7aafc9c2fa2
+      - uses: actions/upload-artifact@v2.3.1
         with:
           name: ${{ steps.addon_name.outputs.ADDON_NAME }}-${{steps.addon_version.outputs.VERSION }}.tar.gz
           path: dist/${{ steps.addon_name.outputs.ADDON_NAME }}-${{steps.addon_version.outputs.VERSION }}.tar.gz
-      - uses: splunk/appinspect-cli-action@32f829879df8117a18098ac42024ac6d83c25130
+      - uses: splunk/appinspect-cli-action@v1.4.7
         with:
           app_path: dist/${{ steps.addon_name.outputs.ADDON_NAME }}-${{steps.addon_version.outputs.VERSION }}.tar.gz
-      - uses: actions/upload-artifact@82c141cc518b40d92cc801eee768e7aafc9c2fa2
+      - uses: actions/upload-artifact@v2.3.1
         with:
           name: appinspect_result.json
           path: appinspect_result.json

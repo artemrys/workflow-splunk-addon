@@ -1,0 +1,8 @@
+ci:
+    autofix_prs: false
+
+repos:
+-   repo: https://github.com/sirosen/check-jsonschema
+    rev: 0.10.2
+    hooks:
+    -   id: check-github-workflows

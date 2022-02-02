@@ -21,3 +21,7 @@ jobs:
   build:
     uses: artemrys/workflow-splunk-addon/.github/workflows/reusable-build-release.yaml@v0.0.8
 ```
+
+### Inputs
+
+* [optional] `ucc_gen_version` - specify version of [`ucc-gen`](https://github.com/splunk/addonfactory-ucc-generator)

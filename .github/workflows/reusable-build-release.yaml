@@ -8,6 +8,13 @@ on:
         required: false
         type: string
         default: "5.10.2"
+    secrets:
+      SPLUNKBASE_USER:
+        description: "Splunkbase username"
+        required: false
+      SPLUNKBASE_PASSWORD:
+        description: "Splunkbase password"
+        required: false
 
 jobs:
   build:
@@ -78,3 +85,36 @@ jobs:
         with:
           name: appinspect_result_${{ matrix.tags }}.json
           path: appinspect_result.json
+
+  check-splunkbase-credentials:
+    runs-on: ubuntu-latest
+    outputs:
+      AVAILABLE: ${{ steps.check-splunkbase-credentials.outputs.AVAILABLE }}
+    needs: build
+    steps:
+      - id: check-splunkbase-credentials
+        run: |
+          if [ ! -z "${{ secrets.SPLUNKBASE_USER }}" ] && [ ! -z "${{ secrets.SPLUNKBASE_PASSWORD }}" ]; then
+            echo "::set-output name=AVAILABLE::true"
+          fi
+
+  appinspect-api:
+    runs-on: ubuntu-latest
+    needs:
+      - build
+      - check-splunkbase-credentials
+    if: ${{ needs.check-splunkbase-credentials.outputs.AVAILABLE == 'true' }}
+    steps:
+      - uses: actions/checkout@v2.4.0
+      - uses: actions/setup-python@v2.3.1
+        with:
+          python-version: "3.7"
+      - uses: actions/download-artifact@v2.1.0
+        with:
+          name: ${{ needs.build.outputs.ADDON_NAME }}-${{ needs.build.outputs.ADDON_VERSION }}.tar.gz
+          path: dist
+      - uses: splunk/appinspect-api-action@v2
+        with:
+          filePath: dist/${{ needs.build.outputs.ADDON_NAME }}-${{ needs.build.outputs.ADDON_VERSION }}.tar.gz
+          splunkUser: ${{ secrets.SPLUNKBASE_USER }}
+          splunkPassword: ${{ secrets.SPLUNKBASE_PASSWORD }}

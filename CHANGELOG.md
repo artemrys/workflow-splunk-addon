@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.0.10] - 2022-02-05
+### Added
+- Workaround world-writable files issue, more details [here](https://github.com/splunk/addonfactory-ucc-base-ui/issues/89).
+
 ## [0.0.9] - 2022-02-04
 ### Added
 - Splunk Appinspect API check. If both repository secrets `SPLUNKBASE_USER` and `SPLUNKBASE_PASSWORD` are specified, the workflow will run Splunk Appinspect API check as well, otherwise it will be skipped.
@@ -42,7 +46,8 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Initial version of [workflow-splunk-addon](https://github.com/artemrys/workflow-splunk-addon).
 
-[Unreleased]: https://github.com/artemrys/workflow-splunk-addon/compare/v0.0.9...HEAD
+[Unreleased]: https://github.com/artemrys/workflow-splunk-addon/compare/v0.0.10...HEAD
+[0.0.10]: https://github.com/artemrys/workflow-splunk-addon/compare/v0.0.9...v0.0.10
 [0.0.9]: https://github.com/artemrys/workflow-splunk-addon/compare/v0.0.8...v0.0.9
 [0.0.8]: https://github.com/artemrys/workflow-splunk-addon/compare/v0.0.7...v0.0.8
 [0.0.7]: https://github.com/artemrys/workflow-splunk-addon/compare/v0.0.6...v0.0.7

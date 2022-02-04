@@ -27,15 +27,17 @@ jobs:
       - uses: actions/setup-python@v2.3.1
         with:
           python-version: 3.7
+      - run: |
+          pip install crudini==0.9.3
       - name: Get version
         id: addon_version
         run: |
-          ADDON_VERSION=$(cat package/default/app.conf | grep -e ^version | awk '{print $3}')
+          ADDON_VERSION=$(crudini --get package/default/app.conf launcher version)
           echo "::set-output name=ADDON_VERSION::$ADDON_VERSION"
       - name: Get addon name
         id: addon_name
         run: |
-          ADDON_NAME=$(cat package/default/app.conf | grep -e ^id | awk '{print $3}')
+          ADDON_NAME=$(crudini --get package/default/app.conf package id)
           echo "::set-output name=ADDON_NAME::$ADDON_NAME"
       - name: Install dependencies
         run: |

@@ -19,7 +19,7 @@ on:
 
 jobs:
   build:
-    uses: artemrys/workflow-splunk-addon/.github/workflows/reusable-build-release.yaml@v0.0.8
+    uses: artemrys/workflow-splunk-addon/.github/workflows/reusable-build-release.yaml@v0.0.9
 ```
 
 ### Inputs

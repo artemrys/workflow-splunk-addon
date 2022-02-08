@@ -47,8 +47,8 @@ jobs:
         run: |
           ucc-gen --ta-version ${{ steps.addon_version.outputs.ADDON_VERSION }}
       - name: Fix file permissions
-        # This step is needed to workaround issue with UCC UI.
-        # For more information check out https://github.com/splunk/addonfactory-ucc-base-ui/issues/89.
+        # This step is needed to workaround issue with Github Actions.
+        # For more information check out https://github.com/splunk/addonfactory-ucc-generator/issues/425.
         run: |
           chmod 644 output/${{ steps.addon_name.outputs.ADDON_NAME }}/appserver/static/js/build/*
           chmod 644 output/${{ steps.addon_name.outputs.ADDON_NAME }}/appserver/static/*.png

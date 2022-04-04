@@ -3,6 +3,6 @@ ci:
 
 repos:
 -   repo: https://github.com/sirosen/check-jsonschema
-    rev: 0.14.1
+    rev: 0.14.2
     hooks:
     -   id: check-github-workflows

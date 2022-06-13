@@ -24,7 +24,7 @@ jobs:
       addon_version: ${{ steps.addon_version.outputs.ADDON_VERSION }}
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
+      - uses: actions/setup-python@v4
         with:
           python-version: 3.7
       - run: |
@@ -85,7 +85,7 @@ jobs:
           - "splunk_appinspect"
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
+      - uses: actions/setup-python@v4
         with:
           python-version: "3.7"
       - uses: actions/download-artifact@v3
@@ -121,7 +121,7 @@ jobs:
     if: ${{ needs.check-splunkbase-credentials.outputs.AVAILABLE == 'true' }}
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
+      - uses: actions/setup-python@v4
         with:
           python-version: "3.7"
       - uses: actions/download-artifact@v3

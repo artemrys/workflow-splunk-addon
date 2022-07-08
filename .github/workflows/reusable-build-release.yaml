@@ -7,7 +7,7 @@ on:
         description: "ucc-gen version to install"
         required: false
         type: string
-        default: "5.10.3"
+        default: "5.11.0"
     secrets:
       SPLUNKBASE_USER:
         description: "Splunkbase username"

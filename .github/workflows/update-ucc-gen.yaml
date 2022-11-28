@@ -16,7 +16,7 @@ jobs:
           then
             CURRENT_VERSION=$(cat current_version.txt)
             LATEST_VERSION=$(cat latest_version.txt)
-            sed -i '' -e 's/$CURRENT_VERSION/$LATEST_VERSION/g' .github/workflows/reusable-build-release.yaml
+            sed -i -e 's/$CURRENT_VERSION/$LATEST_VERSION/g' .github/workflows/reusable-build-release.yaml
             git config --global user.name github-actions
             git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
             git co -b new-ucc-gen-version

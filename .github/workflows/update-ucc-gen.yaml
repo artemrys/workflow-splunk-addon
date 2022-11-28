@@ -1,0 +1,29 @@
+on:
+  schedule:
+    - cron: "0 0 */7 * *"
+  workflow_dispatch:
+
+jobs:
+  update-ucc-gen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+      - run: |
+          pip install requests pyyaml
+          python .github/scripts/check_ucc_gen_version.py
+          if [ -f "current_version.txt" ]
+          then
+            CURRENT_VERSION=$(cat current_version.txt)
+            LATEST_VERSION=$(cat latest_version.txt)
+            sed -i '' -e 's/$CURRENT_VERSION/$LATEST_VERSION/g' .github/workflows/reusable-build-release.yaml
+            git config --global user.name github-actions
+            git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
+            git co -b new-ucc-gen-version
+            git add .github/workflows/reusable-build-release.yaml
+            git commit -m "New ucc-gen version"
+            git push -u origin new-ucc-gen-version
+            gh pr create --base main --reviewer artemrys --title "Updating ucc-gen version"
+          else
+            echo "No version files detected, exiting..."
+          fi

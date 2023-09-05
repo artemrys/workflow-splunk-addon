@@ -23,7 +23,7 @@ jobs:
       addon_name: ${{ steps.addon_name.outputs.ADDON_NAME }}
       addon_version: ${{ steps.addon_version.outputs.ADDON_VERSION }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: 3.7
@@ -87,7 +87,7 @@ jobs:
           - "self-service"
           - "splunk_appinspect"
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: "3.7"
@@ -123,7 +123,7 @@ jobs:
       - check-splunkbase-credentials
     if: ${{ needs.check-splunkbase-credentials.outputs.AVAILABLE == 'true' }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: "3.7"

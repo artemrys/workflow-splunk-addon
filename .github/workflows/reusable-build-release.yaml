@@ -91,7 +91,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.7"
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: ${{ needs.build.outputs.ADDON_NAME }}-${{ needs.build.outputs.ADDON_VERSION }}.tar.gz
           path: dist
@@ -127,7 +127,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.7"
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: ${{ needs.build.outputs.ADDON_NAME }}-${{ needs.build.outputs.ADDON_VERSION }}.tar.gz
           path: dist

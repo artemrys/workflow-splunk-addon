@@ -131,7 +131,7 @@ jobs:
         with:
           name: ${{ needs.build.outputs.ADDON_NAME }}-${{ needs.build.outputs.ADDON_VERSION }}.tar.gz
           path: dist
-      - uses: splunk/appinspect-api-action@v2
+      - uses: splunk/appinspect-api-action@v3
         with:
           filePath: dist/${{ needs.build.outputs.ADDON_NAME }}-${{ needs.build.outputs.ADDON_VERSION }}.tar.gz
           splunkUser: ${{ secrets.SPLUNKBASE_USER }}
